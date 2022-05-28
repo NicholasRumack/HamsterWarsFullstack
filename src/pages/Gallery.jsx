@@ -43,10 +43,6 @@ function Gallery() {
 	function SelectedHamsterInfo(hamster) {
         SetSelectedHamster(hamster)
       }
-/* 	function DeleteHamster(hamsterId) {
-        fetch("/hamsters/" + hamsterId, { method: 'DELETE'})
-        setHamster( setHamster())
-      } */
 	function DeleteHamster(id) {
 		fetch("/hamsters/" + id, {
 		  method: "DELETE",
@@ -58,8 +54,7 @@ function Gallery() {
 		}
 		window.location.reload();
 	  }
- 
-  
+
 	if (error) {
 	  return <div>Error: {error.message}</div>;
 	} else if (!isLoaded) {

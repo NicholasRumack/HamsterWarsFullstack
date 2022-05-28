@@ -1,6 +1,6 @@
-import { Button } from 'react-bootstrap'
 import HamsterCard from '../components/HamsterCard'
 import {useState, useEffect} from 'react'
+import { Modal, Button } from 'react-bootstrap';
 
 function Battles() {
 	const [error, setError] = useState(null);
@@ -9,6 +9,11 @@ function Battles() {
 	const [hamster2, sethamnster2] = useState([]);
 	const [EnableResults, SetEnableResults] = useState(false)
 	const [winner, setwinner] = useState([]);
+
+
+	const [show, setShow] = useState(false);
+	const handleClose = () => setShow(false);
+	const handleShow = () => setShow(true);
 
 	useEffect(() => {
 		fetch("/hamsters/random")
@@ -159,16 +164,25 @@ function Battles() {
 
   return (
 <div>
-	<div>
-		<HamsterCard hamster={winner}/>
+	<Modal show={show} onHide={handleClose}>
+        <Modal.Header closeButton>
+        	<Modal.Title>Hamster Winner</Modal.Title>
+			<p>{winner.name}</p>
+        </Modal.Header>
+        <Modal.Body>
+        	<p>Name: {hamster1.name} Name: {hamster2.name}</p>
+        	<p>Wins: {hamster1.wins} Wins: {hamster2.wins}</p>
+        	<p> Defeats: {hamster1.defeats}  Defeats: {hamster2.defeats}</p>
+			<Button onClick={() => handleClose + NewBattles()}>New Battle!</Button>
+        </Modal.Body>
+    </Modal>
+
+	<div onClick={handleShow}>
+		<HamsterCard hamster={hamster1} onClick={() => SendWinner(hamster1)} />
 	</div>
-	<div onClick={() => SendWinner(hamster1)}>
-		<HamsterCard  hamster={hamster1} />
+	<div onClick={handleShow}>
+		<HamsterCard hamster={hamster2} onClick={() => SendWinner(hamster2)}/>
 	</div>
-	<div onClick={() => SendWinner(hamster2)}>
-		<HamsterCard hamster={hamster2} />
-	</div>
-		<Button onClick={() => NewBattles()}>New Battle!</Button>
 </div>
   );
 }

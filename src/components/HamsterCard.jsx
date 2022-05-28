@@ -10,10 +10,10 @@ export default function HamsterCard(data) {
 			<div className='width 400px'>
 				<img src={"./img/" + data.hamster.imgName} alt="" style={{width: 400, height: 300}} />
 			</div>
-				<h4>Name {data.hamster.name}</h4>
-				<p>Age {data.hamster.age}</p>
-				<p>Loves {data.hamster.loves}</p>
-				<p>Favorite Food {data.hamster.favFood}</p>
+				<h4>Name: {data.hamster.name}</h4>
+				<p>Age: {data.hamster.age}</p>
+				<p>Loves: {data.hamster.loves}</p>
+				<p>Favorite Food: {data.hamster.favFood}</p>
 			</Card>
 		</Container>
 	</div>
