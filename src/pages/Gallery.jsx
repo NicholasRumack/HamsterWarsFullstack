@@ -64,7 +64,7 @@ function Gallery() {
 
 	  return (
 
-		<Container className='mt-4 pt3'>
+		<Container className='w-100'>
 		<div>
 			<h1>Gallery</h1>
 		</div>

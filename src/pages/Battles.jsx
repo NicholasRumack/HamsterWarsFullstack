@@ -163,26 +163,38 @@ function Battles() {
 	  } else {
 
   return (
-<div>
+<div className='w-100'>
+	<div>
+		<h1>Battle!</h1>
+	</div>
 	<Modal show={show} onHide={handleClose}>
         <Modal.Header closeButton>
-        	<Modal.Title>Hamster Winner</Modal.Title>
-			<p>{winner.name}</p>
+        	<Modal.Title>Winner is {winner}</Modal.Title>
         </Modal.Header>
         <Modal.Body>
-        	<p>Name: {hamster1.name} Name: {hamster2.name}</p>
-        	<p>Wins: {hamster1.wins} Wins: {hamster2.wins}</p>
-        	<p> Defeats: {hamster1.defeats}  Defeats: {hamster2.defeats}</p>
+		<div className='d-flex m-2'>
+			<div className='m-2'>
+				<p>Name: {hamster1.name}</p>
+				<p>Wins: {hamster1.wins}</p>
+				<p> Defeats: {hamster1.defeats}</p>
+			</div>
+			<div className='m-2'>
+				<p>Name: {hamster2.name}</p>
+				<p>Wins: {hamster2.wins}</p>
+				<p> Defeats: {hamster2.defeats}</p>
+			</div>
+		</div>
 			<Button onClick={() => handleClose + NewBattles()}>New Battle!</Button>
         </Modal.Body>
     </Modal>
-
+<div className='d-flex'>
 	<div onClick={handleShow}>
 		<HamsterCard hamster={hamster1} onClick={() => SendWinner(hamster1)} />
 	</div>
 	<div onClick={handleShow}>
 		<HamsterCard hamster={hamster2} onClick={() => SendWinner(hamster2)}/>
 	</div>
+</div>
 </div>
   );
 }
